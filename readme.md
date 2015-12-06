@@ -1,4 +1,57 @@
-## Lumen PHP Framework
+# Lumen PHP Framework (Fitted for Google AppEngine Managed VMs)
+
+Lumen fork that can run on Google AppEngine. The changes to the stock application code is
+very transparent, just the top-most commit. (You can make sure this is still the case by comparing
+the master branch to the original master branch.
+
+## Prerequisites
+
+* gcloud command available (install the [Google Cloud SDK](https://cloud.google.com/sdk/)
+* gcloud authentication (``gcloud auth``)
+* a project in one of the Managed VMs enabled Google Cloud Platform Zones (at the time of writing, those are all in the us)
+* git, composer, php, composer, python2, python2-crcmod
+* docker & docker-compose if you need a database locally via docker-compose
+
+## Create a project
+
+You can create a new project directly with the composer tool.
+
+```
+composer create-project cedricziel/lumen-appengine-mvm mycoolproject
+```
+
+## Preparation
+
+* ``composer install``
+* modify ``app.yaml`` to your needs (the ``default`` module is exposed at the root of your AppEngine,
+  you can have multiple modules)
+
+
+## Preview
+
+You may start a mysql instance bound to 127.0.0.1/localhost with ``docker-compose up``
+
+```
+python2 $HOME/google-cloud-sdk/bin/dev_appserver.py \
+    --custom_entrypoint="php artisan serve \
+    --port {port}" \
+    app.yaml
+    
+# or
+
+./preview.sh
+```
+
+## Deploy
+
+```
+# "--promote" determines if this should be exposed at your AppEngine Module root
+# "--version" determines how the docker builder VM on Compute Engine will be named (important if
+#             you want to deploy more than one module at time, and the module Version name
+gcloud preview app deploy --version default-001 --promote app.yaml
+```
+
+## Original Readme
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)

@@ -1,6 +1,6 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
+    "name": "cedricziel/lumen-appengine-mvm",
+    "description": "A Laravel Lumen distribution with modifications for Google AppEngines Managed VMs. Applied in a single transparent commit.",
     "keywords": ["framework", "laravel", "lumen"],
     "license": "MIT",
     "type": "project",

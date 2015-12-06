@@ -1,0 +1,18 @@
+runtime: custom
+vm: true
+api_version: 1
+threadsafe: yes
+module: default
+
+vm_settings:
+  machine_type: f1-micro
+
+vm_health_check:
+  enable_health_check: false
+
+skip_files:
+  - vendor/symfony/finder/Tests/Fixtures
+
+handlers:
+- url: .*
+  script: nothing.php
