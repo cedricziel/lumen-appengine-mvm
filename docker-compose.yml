@@ -1,0 +1,9 @@
+mysql:
+  image: mysql:5.6
+  environment:
+    - MYSQL_ROOT_PASSWORD=appappapp
+    - MYSQL_USER=appappapp
+    - MYSQL_PASSWORD=appappapp
+    - MYSQL_DATABASE=app
+  ports:
+    - "33060:3306"
